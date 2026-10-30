@@ -26,7 +26,8 @@ def _settings(args: argparse.Namespace) -> Settings:
 
 def cmd_simulate(args: argparse.Namespace) -> int:
     settings = _settings(args)
-    Path(settings.database_url.removeprefix("sqlite:///")).parent.mkdir(parents=True, exist_ok=True)
+    if settings.database_url.startswith("sqlite:///"):
+        Path(settings.database_url.removeprefix("sqlite:///")).parent.mkdir(parents=True, exist_ok=True)
     engine = PaperEngine(
         settings, seed=args.seed, start=date.fromisoformat(args.start), chaos=Chaos.demo() if args.chaos else None, echo=args.verbose
     )
