@@ -30,6 +30,7 @@ Done:
 ## Findings from the simulation the owner should see
 
 1. **Costs dominate at ₹10,000.** With the placeholder schedule (₹20/order brokerage cap, STT, stamp, GST, DP ≈ ₹16 per sell) a round trip on a ₹1,000 to ₹2,500 position costs about ₹65. The ₹50 per-trade budget follows the spec formula (stop distance × qty) and excludes costs, so a stopped-out trade loses about ₹110. Five consecutive stop-outs reach the ₹500 lockout (seed 11 shows exactly this). Options: (a) keep as is, (b) count estimated costs inside the ₹50 budget, which will skip most trades at this capital, (c) restrict to instruments/brokerage plans where round-trip costs are far smaller. Needs the verified fee schedule first.
+   **Owner decision 2026-10-30:** keep the spec formula (option a) for now; revisit once Paytm's verified fee schedule is in.
 2. **Price bands constrain stops.** A 5% band instrument cannot hold a stop more than about 4% below the previous close; the gateway now rejects such entries (`stop_placeable`).
 3. **Most intents are skipped**, mainly by `min_quantity` (risk or symbol cap too small for one share) and `stop_placeable`. That is expected at this capital and is the correct behaviour.
 
@@ -45,4 +46,4 @@ Done:
 - Paytm Money API onboarding answers (docs/API_BROKER.md).
 - Verified fee schedule and official holiday list.
 - Real historical data source and licence.
-- Decision on finding 1 above.
+- Revisit finding 1 once the verified fee schedule is available.
