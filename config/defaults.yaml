@@ -1,0 +1,28 @@
+# ATA-01 risk policy, INR 10,000 pilot (spec V1.1 section 1A).
+# Values here may only TIGHTEN the mandate ceilings hardcoded in
+# src/ata/risk/limits.py. Loading a looser value fails closed.
+# Changes go through owner change-control; the policy hash is logged at startup.
+policy_version: "2026-10-30.v1"
+risk:
+  initial_capital_inr: 10000
+  bot_capital_cap_inr: 10000
+  per_trade_risk_inr: 50          # 0.5% of equity
+  per_trade_risk_pct: 0.005
+  aggregate_risk_inr: 100         # 1% of equity
+  aggregate_risk_pct: 0.01
+  per_symbol_cap_inr: 2500        # 25%
+  gross_invested_cap_inr: 7500    # 75%
+  min_cash_buffer_inr: 2500
+  max_positions: 3
+  daily_loss_freeze_inr: 150      # 1.5%, resets each trading day
+  daily_loss_freeze_pct: 0.015
+  drawdown_lockout_inr: 500       # 5% from high-water mark, persistent
+  drawdown_lockout_pct: 0.05
+  max_orders_per_second: 1
+  max_spread_bps: 60
+  max_stop_distance_pct: 0.10
+  min_edge_to_cost_ratio: 1.5     # gross target edge must be >= 1.5x estimated round-trip costs
+  max_participation_pct: 0.01     # never more than 1% of the prior bar's volume
+  max_data_age_minutes: 15
+  permitted_segments: [EQ, ETF]
+  permitted_products: [DELIVERY]

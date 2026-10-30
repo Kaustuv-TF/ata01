@@ -1,0 +1,22 @@
+# Paper-only stack: Postgres 16 for the audit log/risk state + the ATA simulator.
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: ata
+      POSTGRES_PASSWORD: ata  # local paper use only; use a secret manager anywhere else
+      POSTGRES_DB: ata
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ata"]
+      interval: 5s
+      retries: 10
+  ata:
+    build: {context: .., dockerfile: infra/Dockerfile}
+    depends_on: {db: {condition: service_healthy}}
+    environment:
+      ATA_DATABASE_URL: postgresql+psycopg://ata:ata@db:5432/ata
+      ATA_REPORT_DIR: /tmp/reports
+    command: ["simulate", "--days", "30", "--chaos"]
+volumes:
+  pgdata:
