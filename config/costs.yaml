@@ -1,0 +1,15 @@
+# Transaction cost ESTIMATES for paper sizing and edge checks.
+# verified: false -> these are placeholders, NOT Paytm Money's actual schedule.
+# Before any live use, replace with the broker's current published schedule
+# (and statutory rates) and set verified: true with a source + date.
+verified: false
+source: "placeholder, deliberately conservative; verify against broker fee schedule"
+brokerage_per_order_inr: 20        # flat cap per executed order
+brokerage_pct_cap: 0.025           # brokerage = min(flat, pct * value)
+stt_delivery_pct: 0.001            # both legs
+exchange_txn_pct: 0.0000297
+sebi_fee_pct: 0.000001
+stamp_duty_buy_pct: 0.00015
+gst_pct: 0.18                      # on brokerage + exchange + SEBI fees
+dp_charge_per_sell_inr: 15.93      # per scrip per sell day
+slippage_bps: 5

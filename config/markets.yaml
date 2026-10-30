@@ -1,0 +1,11 @@
+timezone: Asia/Kolkata
+session:
+  open: "09:15"
+  close: "15:30"
+# Holidays below are SAMPLE dates for simulation. Load the official NSE
+# holiday list for the live year before any paper-live or live run.
+holidays_verified: false
+holidays:
+  - 2026-11-09
+  - 2026-11-24
+  - 2026-12-25

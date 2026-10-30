@@ -1,0 +1,11 @@
+# Sample instrument master for OFFLINE paper simulation only.
+# Symbols are illustrative placeholders, not recommendations, and carry no
+# live metadata. A live instrument master must come from the broker/exchange.
+instruments:
+  - {symbol: DEMO_ETF_NIFTY, exchange: NSE, segment: ETF, tick: "0.01", lot: 1, status: ACTIVE, band_pct: "0.20", start_price: "260", vol_bps: 90, drift_bps: 4, volume: 900000}
+  - {symbol: DEMO_ETF_GOLD,  exchange: NSE, segment: ETF, tick: "0.01", lot: 1, status: ACTIVE, band_pct: "0.20", start_price: "75",  vol_bps: 70, drift_bps: 3, volume: 1500000}
+  - {symbol: DEMO_LARGECAP_A, exchange: NSE, segment: EQ, tick: "0.05", lot: 1, status: ACTIVE, band_pct: "0.10", start_price: "480", vol_bps: 160, drift_bps: 6, volume: 400000}
+  - {symbol: DEMO_LARGECAP_B, exchange: NSE, segment: EQ, tick: "0.05", lot: 1, status: ACTIVE, band_pct: "0.10", start_price: "1450", vol_bps: 140, drift_bps: -2, volume: 250000}
+  - {symbol: DEMO_MIDCAP_C,  exchange: NSE, segment: EQ, tick: "0.05", lot: 1, status: ACTIVE, band_pct: "0.05", start_price: "215", vol_bps: 230, drift_bps: 2, volume: 120000}
+  - {symbol: DEMO_ASM_D,     exchange: NSE, segment: EQ, tick: "0.05", lot: 1, status: ASM,    band_pct: "0.05", start_price: "95",  vol_bps: 300, drift_bps: 10, volume: 50000}
+  - {symbol: DEMO_PRICEY_E,  exchange: NSE, segment: EQ, tick: "0.05", lot: 1, status: ACTIVE, band_pct: "0.10", start_price: "3200", vol_bps: 150, drift_bps: 8, volume: 80000}
